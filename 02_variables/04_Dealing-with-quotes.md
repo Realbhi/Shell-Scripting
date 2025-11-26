@@ -4,7 +4,7 @@ Let’s break them down:
 
 ---
 
-#  **1. Double Quotes → Variable Expands**
+##  **1. Double Quotes → Variable Expands**
 
 ```bash
 echo "Using double quotes: $variable"
@@ -26,7 +26,7 @@ Double quotes = **safe string + expansion allowed**
 
 ---
 
-#  **2. Single Quotes → Literal, No Expansion**
+##  **2. Single Quotes → Literal, No Expansion**
 
 ```bash
 echo 'Using single quotes: $variable'
@@ -48,7 +48,7 @@ Single quotes = **raw text**
 
 ---
 
-#  **3. No Quotes → Word Splitting Happens**
+##  **3. No Quotes → Word Splitting Happens**
 
 ```bash
 echo Using no quotes: $variable
@@ -66,7 +66,7 @@ echo Using no quotes: Hello World
 
 ---
 
-#  **4. Double Quotes Inside Double Quotes**
+##  **4. Double Quotes Inside Double Quotes**
 
 ```bash
 echo "Using double quotes: '$variable'"
@@ -88,7 +88,7 @@ This is just formatting.
 
 ---
 
-#  Best Practice (Important)
+##  Best Practice (Important)
 
 ### **Always use double quotes around variables unless you have a good reason not to.**
 
