@@ -90,6 +90,11 @@ ${var#pattern}
 ${var##pattern}
 ```
 
+The key idea:
+
+- **# = shortest match from the start**  
+- **## = longest match from the start**
+
 **Example:**
 
 ```bash
@@ -98,8 +103,15 @@ path="/var/www/html/index.html"
 echo ${path#*/}      # var/www/html/index.html
 echo ${path##*/}     # index.html  (remove everything up to last /)
 ```
+##
 
 **Remove suffix:**
+
+Patterns:
+
+- **% = remove shortest suffix match**
+- **%% = remove longest suffix match**
+- **Patterns match from the end of the string**
 
 ```bash
 file="backup.tar.gz"
@@ -107,6 +119,7 @@ file="backup.tar.gz"
 echo ${file%.*}      # backup.tar
 echo ${file%%.*}     # backup
 ```
+
 
 ---
 
