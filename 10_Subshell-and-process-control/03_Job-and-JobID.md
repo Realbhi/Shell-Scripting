@@ -146,4 +146,16 @@ kill %+   → kills the current job
 
 Job numbers come from the **jobs table**, not system PIDs.
 
+##
+
+## summary about which jobs can be foregrounded and bacgrounded :
+
+| Job State              | `fg` works?                        | `bg` works? | Behavior                                   |
+| ---------------------- | -----------------------------------| ----------- | ------------------------------------------ |
+| **Foreground Running** |  No (must Ctrl-Z or suspend first) |  No        | Can't background a running FG job directly |
+| **Foreground Stopped** |  Yes (brings to FG again)          |  Yes       | bg resumes it in background                |
+| **Background Running** |  Yes                               |  No        | fg brings it to FG; bg does nothing        |
+| **Background Stopped** |  Yes                               |  Yes       | bg resumes it in background                |
+
+
 
