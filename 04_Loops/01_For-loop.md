@@ -100,3 +100,13 @@ do
 done
 ```
 
+- Bash does not think *.txt is a directory. It simply expands the glob (*.txt) in whatever directory you're currently in.
+
+- So the loop is really:
+
+  - Look at current folder
+
+  - Expand *.txt into all matching filenames
+ 
+  - Loop over them
+
