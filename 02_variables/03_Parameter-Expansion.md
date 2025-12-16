@@ -133,11 +133,45 @@ These are *critical* in production scripts.
 echo ${user:-"unknown"}
 ```
 
+Behavior
+If user is unset or empty
+
+- Prints "unknown"
+- user remains unchanged
+
 ### Use default **and assign it**
 
 ```bash
 echo ${user:="guest"}   # user becomes guest if empty
 ```
+
+Behavior
+If user is unset or empty
+
+- Assigns user="guest"
+- Prints "guest"
+
+
+**overwrite with :="**
+
+Assignment happens only if var is:
+
+- unset, or
+- set but empty (var="")
+
+| Variable state | `:-`         | `:=`            |
+| -------------- | ------------ | --------------- |
+| Unset          | Uses default | Assigns default |
+| Empty          | Uses default | Assigns default |
+| Non-empty      | Uses value   | Uses value      |
+
+
+| Operator | Unset   | Empty   | Non-empty | Assigns?             |
+| -------- | ------- | ------- | --------- | -------------------- |
+| `:-`     | default | default | value     | ❌                    |
+| `:=`     | default | default | value     | ✅ (only unset/empty) |
+| `=`      | default | empty   | value     | ✅ (unset only)       |
+
 
 ### Throw error if variable is empty
 
@@ -171,7 +205,7 @@ echo ${str,}    # dEVOPS (lowercase first)
 
 ---
 
-### 9. **Get List of Variable Names**
+### 9. **Get List of Variable Names (ADV)**
 
 ```bash
 echo ${!var*}
