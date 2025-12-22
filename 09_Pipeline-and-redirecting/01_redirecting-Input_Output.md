@@ -162,6 +162,13 @@ grep "apple" <<< "apple banana cherry"
 grep "apple" <<< "apple banana cherry"
 ```
 
+**First: what grep actually does**
+
+- grep does NOT extract words.
+- grep filters lines.
+
+If a line matches the pattern, grep prints the entire line.
+
 Output:
 
 ```
