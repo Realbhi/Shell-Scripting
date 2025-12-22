@@ -60,3 +60,88 @@ Fruit at index 0: Apple
 Fruit at index 1: Banana
 Fruit at index 2: Orange
 ```
+---
+
+## **Additional Info:**
+
+script :
+
+```
+fruits=("Apple" "Banana" "Orange") 
+index=0 
+while [ $index -lt ${#fruits[@]} ]; do 
+     echo "Fruit at index $index: ${fruits[$index]}" 
+     index=$((index++)) 
+done
+```
+
+**The problematic line :**
+
+index=$((index++))
+
+**In Bash arithmetic:**
+
+- index++ returns the OLD value, then increments index.
+- This is called post-increment.
+
+
+## **What actually happens step by step**
+
+Assume:
+
+index=0
+
+Now evaluate:
+
+index=$((index++))
+
+**Step 1: evaluate index++**
+
+- Value produced: 0 (old value)
+- Side effect: index becomes 1
+
+**Step 2: assignment happens**
+
+index=0
+
+- The assignment overwrites the increment.
+- Final result: index == 0
+
+
+So yes — the increment did happen briefly, but you immediately undid it.
+
+
+## **Why ((index++)) works but $((index++)) doesn’t**
+
+This works:
+((index++))
+
+
+Because:
+
+- No assignment
+- Increment happens and sticks
+
+  
+This does NOT work:
+index=$((index++))
+
+
+Because:
+
+- Expansion happens first
+- Assignment overwrites the increment
+
+
+**If you REALLY want assignment + increment**
+
+Use pre-increment:
+```
+index=$((++index))
+```
+
+Why this works:
+
+- ++index increments first
+- returns the new value
+- assignment keeps it
