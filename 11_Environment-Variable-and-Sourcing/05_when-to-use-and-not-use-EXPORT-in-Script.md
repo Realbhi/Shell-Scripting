@@ -30,6 +30,12 @@ AGE=20
 
 `NAME=Ash` stays in the shell but is **not inherited** by other processes.
 
+
+| Type              | Visible in current shell | Visible in subshell |
+| ----------------- | ------------------------ | ------------------- |
+| Normal variable   |  Yes                     |  No                |
+| Exported variable |  Yes                    |  Yes               |
+
 ---
 
 ##  **2. Do you need `export` when using `source`?**
